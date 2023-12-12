@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from "../actions/auth";
-// import '../styles/login.css';
+import '../styles/Login.css';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -20,30 +20,6 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         dispatch(loginUser(email, password, navigate));
-
-
-    //     try {
-    //         const response = await fetch(apiUrl, {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type":"application/json",
-    //                 "accept":"application/json"
-    //             },
-    //             body: JSON.stringify({ email, password }),
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error('identifiants ou mot de passe incorrects');
-    //         }
-
-    //         const data = await response.json();
-    //         console.log (data);
-    //         console.log(data.body.token)
-    //         localStorage.setItem("token", data.body.token);
-    //         navigate("/profile");
-    //     } catch (error) {
-    //         setError("Identifiants ou mot de passe incorrects");
-    //     }
     };
 
     return(
