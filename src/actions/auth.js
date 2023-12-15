@@ -113,3 +113,10 @@ export const updateUsername = (newUsername) => async (dispatch) => {
         dispatch(updateUsernameFailure('Erreur lors de la MAJ du username')); 
     }
 };
+
+export const logout = (navigate) => (dispatch) => {
+    dispatch({type: 'LOGOUT',});
+    localStorage.removeItem('token');
+    localStorage.removeItem('profile');
+    navigate("/");
+};

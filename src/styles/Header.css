@@ -20,22 +20,30 @@ body {
     padding: 5px 20px;
 }
   
-.main-nav a {
+.main-nav p {
     font-weight: bold;
+    text-decoration: none!;
     color: #2c3e50;
+    margin-right: 20px;
+
 }
-  
-.main-nav a.router-link-exact-active {
+
+.fa {
+    margin-right: 2px;
+}
+.main-nav p.router-link-exact-active {
     color: #42b983;
 }
   
 .main-nav-item {
     text-decoration: none;
     margin-right: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
 }
   
 .main-nav-item:hover {
-    text-decoration: underline;
+    text-decoration: underline!important;
 }
   
 .main-nav-logo {

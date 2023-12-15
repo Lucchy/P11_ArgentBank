@@ -13,12 +13,10 @@ const Profile = () => {
     const { token, profile } = useSelector((state) => state.auth);
 
     useEffect (() => {
-        console.log('Entrée dans le useEffect');
         dispatch(fetchUserProfile(token));
 
     }, [dispatch, token]);
     
-    const lsProfile = JSON.parse(window.localStorage.getItem('profile'));
 
     const username = profile?.userName || '';
     const lastname = profile?.lastName || '';
@@ -29,7 +27,6 @@ const Profile = () => {
 
     const handleEditClick = () => {
         setIsEditing(true);
-        console.log('lsProfile :', JSON.parse(window.localStorage.getItem('profile')));
     }
 
     const handleSaveClick = () => {
@@ -38,19 +35,20 @@ const Profile = () => {
         setIsEditing(false);
     };
 
+
     return (
         <div className="user">
             <Header/>
             <main className="main bg-dark">
                 <div className="header">
                     {isEditing ? (
-                        <form>
+                        <form onSubmit={(e) => e.preventDefault()}>
                             <h2>Edit user Info</h2>
-                            <input className='f-name' type='text'value={`Lastname : ${lastname}`}/><br/>
-                            <input className='f-name' type='text'value={`Firstname : ${firstname}`}/><br/>
+                            <input className='f-name' type='text'value={`Lastname : ${lastname}`} readOnly/><br/>
+                            <input className='f-name' type='text'value={`Firstname : ${firstname}`}readOnly/><br/>
                             <input className='f-username' placeholder='Entrer nouveau pseudo' 
                             type='text'value={newUsername} onChange={(e)=> setNewUsername(e.target.value)}/><br/>
-                            <button className='save-button' onClick={handleSaveClick}>
+                            <button type='button' className='save-button' onClick={handleSaveClick}>
                                 Save
                             </button>
                         </form>

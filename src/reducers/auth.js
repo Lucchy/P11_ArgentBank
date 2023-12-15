@@ -12,6 +12,7 @@ const authReducers = (state = initialState, action) => {
             return {
                 ...state,
                 token: action.payload.token,
+                profile: action.payload.profile,
                 error: null,
             };
         
@@ -25,8 +26,6 @@ const authReducers = (state = initialState, action) => {
             };
 
         case 'FETCH_PROFILE_SUCCESS':
-            console.log('PROFILE : storing in LS', JSON.stringify(action.payload));
-            localStorage.setItem('profile', JSON.stringify(action.payload));
             return {
                 ...state,
                 profile: action.payload,
@@ -55,6 +54,14 @@ const authReducers = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.payload,
+            };
+
+        case 'LOGOUT':
+            return {
+                ...state,
+                token: null,
+                profile: null,
+                error: null,
             };
 
             default:
